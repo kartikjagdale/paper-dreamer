@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --color-white: oklch(1.000 0.000 0);
+  --color-fog: oklch(0.970 0.005 210);
+  --color-steel: oklch(0.520 0.085 210);
+  --color-steel-light: oklch(0.520 0.085 210 / 0.08);
+  --color-steel-ring: oklch(0.520 0.085 210 / 0.2);
+  --color-ink: oklch(0.200 0.010 210);
+  --color-muted: oklch(0.450 0.010 210);
+  --color-border: oklch(0.900 0.005 210);
+  --color-amber: oklch(0.580 0.150 65);
+  --color-amber-light: oklch(0.950 0.020 65);
+  --color-amber-text: oklch(0.400 0.120 65);
+  --color-red: oklch(0.550 0.180 25);
+  --color-red-light: oklch(0.970 0.020 25);
+  --color-green: oklch(0.500 0.130 155);
+  --color-green-light: oklch(0.960 0.020 155);
+
+  --font-serif: 'Newsreader', 'Newsreader-Fallback', Charter, Georgia, serif;
+  --font-sans: 'Source Sans 3', 'SourceSans3-Fallback', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: oklch(0.200 0.010 210);
+  background: oklch(1.000 0.000 0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  font-weight: 400;
+}
+
+.font-serif {
+  font-optical-sizing: auto;
+}
+
+/* Metric-matched fallback to minimise FOUT layout shift */
+@font-face {
+  font-family: 'Newsreader-Fallback';
+  src: local('Georgia');
+  size-adjust: 102%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'SourceSans3-Fallback';
+  src: local('Arial');
+  size-adjust: 104%;
+  ascent-override: 88%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: oklch(0.850 0.005 210);
+  border-radius: 20px;
+}
+
+.chat-markdown p {
+  margin-bottom: 0.5em;
+}
+.chat-markdown p:last-child {
+  margin-bottom: 0;
+}
+.chat-markdown strong {
+  font-weight: 600;
+  color: oklch(0.200 0.010 210);
+}
+.chat-markdown ol,
+.chat-markdown ul {
+  margin: 0.4em 0;
+  padding-left: 1.4em;
+}
+.chat-markdown li {
+  margin-bottom: 0.25em;
+}
+.chat-markdown code {
+  background: oklch(0.900 0.005 210 / 0.5);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+.chat-markdown pre {
+  background: oklch(0.200 0.010 210);
+  color: oklch(0.950 0.005 210);
+  padding: 0.75em 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 0.5em 0;
+  font-size: 0.85em;
+}
+.chat-markdown pre code {
+  background: none;
+  padding: 0;
+}
+.chat-markdown blockquote {
+  border-left: 3px solid oklch(0.520 0.085 210 / 0.3);
+  padding-left: 0.75em;
+  margin: 0.5em 0;
+  color: oklch(0.450 0.010 210);
+}

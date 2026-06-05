@@ -1,0 +1,5 @@
+{
+  "name": "Research Paper Visualizer",
+  "description": "An AI-powered dashboard that parses uploaded research PDFs and summarizes them using selectable local Ollama models.",
+  "requestFramePermissions": []
+}

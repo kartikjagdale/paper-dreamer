@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-04T00:00:00Z",
+  "title": "Design System: Paper Dreamer",
+  "extensions": {
+    "colorMeta": {
+      "steel-blue": {
+        "role": "primary",
+        "displayName": "Steel Blue",
+        "canonical": "oklch(0.520 0.085 210)",
+        "tonalRamp": [
+          "oklch(0.150 0.040 210)",
+          "oklch(0.250 0.060 210)",
+          "oklch(0.350 0.075 210)",
+          "oklch(0.450 0.085 210)",
+          "oklch(0.520 0.085 210)",
+          "oklch(0.650 0.070 210)",
+          "oklch(0.800 0.040 210)",
+          "oklch(0.950 0.010 210)"
+        ]
+      },
+      "warm-amber": {
+        "role": "secondary",
+        "displayName": "Warm Amber",
+        "canonical": "oklch(0.580 0.150 65)",
+        "tonalRamp": [
+          "oklch(0.200 0.060 65)",
+          "oklch(0.300 0.090 65)",
+          "oklch(0.400 0.120 65)",
+          "oklch(0.500 0.140 65)",
+          "oklch(0.580 0.150 65)",
+          "oklch(0.700 0.120 65)",
+          "oklch(0.850 0.060 65)",
+          "oklch(0.950 0.020 65)"
+        ]
+      },
+      "deep-ink": {
+        "role": "neutral",
+        "displayName": "Deep Ink",
+        "canonical": "oklch(0.200 0.010 210)",
+        "tonalRamp": [
+          "oklch(0.100 0.010 210)",
+          "oklch(0.200 0.010 210)",
+          "oklch(0.300 0.010 210)",
+          "oklch(0.400 0.010 210)",
+          "oklch(0.500 0.010 210)",
+          "oklch(0.600 0.008 210)",
+          "oklch(0.750 0.005 210)",
+          "oklch(0.900 0.003 210)"
+        ]
+      },
+      "quiet-gray": {
+        "role": "neutral",
+        "displayName": "Quiet Gray",
+        "canonical": "oklch(0.450 0.010 210)",
+        "tonalRamp": [
+          "oklch(0.150 0.010 210)",
+          "oklch(0.250 0.010 210)",
+          "oklch(0.350 0.010 210)",
+          "oklch(0.450 0.010 210)",
+          "oklch(0.550 0.010 210)",
+          "oklch(0.650 0.008 210)",
+          "oklch(0.800 0.005 210)",
+          "oklch(0.940 0.003 210)"
+        ]
+      },
+      "pale-fog": {
+        "role": "neutral",
+        "displayName": "Pale Fog",
+        "canonical": "oklch(0.970 0.005 210)",
+        "tonalRamp": [
+          "oklch(0.850 0.005 210)",
+          "oklch(0.880 0.005 210)",
+          "oklch(0.910 0.005 210)",
+          "oklch(0.940 0.005 210)",
+          "oklch(0.955 0.005 210)",
+          "oklch(0.970 0.005 210)",
+          "oklch(0.985 0.003 210)",
+          "oklch(1.000 0.000 0)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "oklch(1.000 0.000 0)",
+        "tonalRamp": []
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Paper titles, primary result headings. One per page." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings in results: Evidence-Backed Findings, Key Concepts, etc." },
+      "title": { "displayName": "Title", "purpose": "Card headers, subsection labels, nav items." },
+      "body": { "displayName": "Body", "purpose": "All running text. Capped at 70ch." },
+      "label": { "displayName": "Label", "purpose": "Metadata, stat labels, chip text." }
+    },
+    "shadows": [
+      { "name": "ambient", "value": "0 1px 3px oklch(0.200 0.010 210 / 0.06), 0 1px 2px oklch(0.200 0.010 210 / 0.04)", "purpose": "Input card at rest. Barely visible." },
+      { "name": "elevated", "value": "0 4px 12px oklch(0.200 0.010 210 / 0.08)", "purpose": "Dropdowns, tooltips, floating elements." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default easing for state transitions (buttons, inputs)." },
+      { "name": "ease-out-quart", "value": "cubic-bezier(0.25, 1, 0.5, 1)", "purpose": "Exit easing for elements leaving view." },
+      { "name": "duration-fast", "value": "100ms", "purpose": "Hover states, color shifts." },
+      { "name": "duration-normal", "value": "150ms", "purpose": "Button presses, focus rings." },
+      { "name": "duration-slow", "value": "300ms", "purpose": "Panel entrances, card reveals." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main call-to-action. Steel Blue fill, white text.",
+      "html": "<button class=\"ds-btn-primary\">Analyze Document</button>",
+      "css": ".ds-btn-primary { background: oklch(0.520 0.085 210); color: #fff; padding: 12px 24px; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.4; border: none; border-radius: 8px; cursor: pointer; transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover { background: oklch(0.200 0.010 210); } .ds-btn-primary:focus-visible { outline: 2px solid oklch(0.520 0.085 210 / 0.4); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary action. White fill, ink text, subtle border.",
+      "html": "<button class=\"ds-btn-secondary\">Cancel</button>",
+      "css": ".ds-btn-secondary { background: #fff; color: oklch(0.200 0.010 210); padding: 12px 24px; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.4; border: 1px solid oklch(0.450 0.010 210 / 0.3); border-radius: 8px; cursor: pointer; transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-secondary:hover { background: oklch(0.970 0.005 210); } .ds-btn-secondary:focus-visible { outline: 2px solid oklch(0.520 0.085 210 / 0.4); outline-offset: 2px; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "Text input / URL field. White fill, subtle border, Steel Blue focus ring.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"https://arxiv.org/pdf/...\" />",
+      "css": ".ds-input { width: 100%; background: #fff; color: oklch(0.200 0.010 210); padding: 12px 16px; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 1rem; line-height: 1.4; border: 1px solid oklch(0.850 0.005 210); border-radius: 8px; transition: border-color 150ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-input::placeholder { color: oklch(0.450 0.010 210); } .ds-input:focus { outline: none; border-color: oklch(0.520 0.085 210); box-shadow: 0 0 0 2px oklch(0.520 0.085 210 / 0.2); background: oklch(0.970 0.005 210); }"
+    },
+    {
+      "name": "Result Card",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "Container for each analysis section in the results pane.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-heading\">Evidence-Backed Findings</h3><p class=\"ds-card-body\">The paper demonstrates a 15% improvement in extraction accuracy over baseline methods.</p></div>",
+      "css": ".ds-card { background: #fff; padding: 24px; border-radius: 12px; border: 1px solid oklch(0.900 0.005 210); } .ds-card-heading { font-family: 'Newsreader', Charter, Georgia, serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 500; line-height: 1.3; letter-spacing: -0.01em; color: oklch(0.200 0.010 210); margin: 0 0 12px; } .ds-card-body { font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.7; color: oklch(0.200 0.010 210); max-width: 70ch; margin: 0; }"
+    },
+    {
+      "name": "Tab Navigation",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Upload/URL source selector tabs.",
+      "html": "<nav class=\"ds-tabs\"><button class=\"ds-tab ds-tab-active\">Upload PDF</button><button class=\"ds-tab\">PDF Link</button></nav>",
+      "css": ".ds-tabs { display: flex; border-bottom: 1px solid oklch(0.900 0.005 210); } .ds-tab { padding: 12px 20px; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: oklch(0.450 0.010 210); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: color 100ms, border-color 100ms; } .ds-tab:hover { color: oklch(0.200 0.010 210); } .ds-tab-active { color: oklch(0.520 0.085 210); border-bottom-color: oklch(0.520 0.085 210); }"
+    },
+    {
+      "name": "Badge",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Status indicator (analyzing, long paper detected, complete).",
+      "html": "<span class=\"ds-badge ds-badge-amber\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"/><line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"/></svg> Long paper detected</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 0.8125rem; font-weight: 600; line-height: 1.4; border-radius: 4px; } .ds-badge-amber { background: oklch(0.950 0.020 65); color: oklch(0.400 0.120 65); } .ds-badge svg { width: 14px; height: 14px; flex-shrink: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Reading Room",
+    "overview": "A well-lit library alcove in mid-morning. Tall windows, good paper, structured thought laid bare. The interface is the reading environment: it sets the conditions for focus and then recedes. Content fills the space the way text fills a well-typeset page.\n\nThis system rejects the current AI-tool aesthetic: tracked uppercase labels on every section, geometric sans-serif at every weight, muted grays that strain the eyes, gradient-clipped decorative text, identical rounded cards in grid formation. It also rejects terminal darkness, hacker monospace, and over-designed marketing surfaces with glassmorphism and parallax. The interface is neither flashy nor austere. It is comfortable.",
+    "keyCharacteristics": [
+      "Serif headlines with sans-serif body create intellectual weight without pretension",
+      "Pure white background with restrained steel-blue accent (used sparingly, not everywhere)",
+      "High body-text contrast for extended reading sessions",
+      "Generous line height and capped line length (65-75ch) for comfort",
+      "Hierarchy through scale and weight, not through color coding every section differently"
+    ],
+    "rules": [
+      { "name": "The Restraint Rule", "body": "Steel Blue appears on no more than 10% of any screen. If a section has more blue than white, something is wrong. Its power comes from its scarcity.", "section": "colors" },
+      { "name": "The No-Cream Rule", "body": "Backgrounds are pure white or Pale Fog. Never warm-tinted. Never beige, sand, bone, linen, parchment, or any token name that evokes paper color.", "section": "colors" },
+      { "name": "The No-Flat-Type Rule", "body": "Adjacent text elements must differ by at least 1.25x in size OR clearly differ in weight. If two pieces of text look the same size and weight, the hierarchy has failed.", "section": "typography" },
+      { "name": "The Line-Length Rule", "body": "No paragraph of body text exceeds 70ch. No exception.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. The only lifted elements are the input panel card and floating overlays.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Newsreader for all headings within the result pane.",
+      "Do cap all body text at 70ch width.",
+      "Do maintain ≥7:1 contrast for body text (Deep Ink on White).",
+      "Do use Steel Blue only for interactive elements and one structural accent per section.",
+      "Do use text-wrap: balance on headline-level text and text-wrap: pretty on body paragraphs.",
+      "Do keep the page background pure white. Cards and sections use Pale Fog for tonal layering."
+    ],
+    "donts": [
+      "Don't use the generic SaaS aesthetic: blue-600 + slate-gray + rounded-card template.",
+      "Don't use terminal/hacker aesthetics: monospace body text, dark backgrounds, green-on-black.",
+      "Don't use gradient text, glassmorphism, parallax, or animated distractions.",
+      "Don't put tiny uppercase tracked eyebrows above every section heading.",
+      "Don't use border-left greater than 1px as a colored accent stripe.",
+      "Don't use identical card grids. Vary weight and density across result sections.",
+      "Don't use cream, sand, beige, bone, or any warm-tinted background.",
+      "Don't use Inter, Geist, DM Sans, Plus Jakarta Sans, or Cal Sans.",
+      "Don't color-code every section differently."
+    ]
+  }
+}

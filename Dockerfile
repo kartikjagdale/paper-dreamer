@@ -23,6 +23,8 @@ COPY package.json ./
 # Cache directories (analyses + embeddings) are mounted as a volume at runtime
 RUN mkdir -p .cache/analyses .cache/embeddings
 
+ENV NODE_ENV=production
+
 EXPOSE 3000
 
 CMD ["node", "dist/server.cjs"]

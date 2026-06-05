@@ -126,14 +126,23 @@ Settings (default model, embedding model) can also be configured directly in the
 | `npm start` | Run production build |
 | `npm run lint` | Type-check with TypeScript (`tsc --noEmit`) |
 
-### Docker
+### Docker (via Makefile)
 
 | Command | Description |
 |---|---|
-| `docker compose up` | Build image and start the app at http://localhost:3000 |
-| `docker compose up --build` | Force rebuild image (after code changes) |
+| `make up` | Build image and start the app at http://localhost:3000 |
+| `make down` | Stop and remove containers |
+| `make logs` | Tail container logs |
+| `make clean` | Stop containers and delete the cache volume |
+
+Raw Docker Compose equivalents if you prefer:
+
+| Command | Description |
+|---|---|
+| `docker compose up --build -d` | Build and start detached |
 | `docker compose down` | Stop and remove containers |
-| `docker compose down -v` | Stop containers and delete the cache volume |
+| `docker compose logs -f` | Tail logs |
+| `docker compose down -v` | Stop and delete cache volume |
 
 ## Architecture
 
@@ -215,17 +224,22 @@ The Docker setup uses a **3-stage build** to keep the image lean:
 
 1. **deps** — installs `node_modules` via `npm ci`
 2. **builder** — runs `npm run build` (Vite frontend + esbuild server bundle → `dist/`)
-3. **runner** — copies only `dist/` and `node_modules` into a clean Alpine image
+3. **runner** — copies only `dist/` and `node_modules` into a clean Alpine image; `NODE_ENV=production` is baked in so the server always serves the built frontend
 
 Ollama runs natively on your Mac (full Metal GPU). The container reaches it via `host.docker.internal:11434`, which Docker resolves to the host machine automatically.
 
-The `.cache/` directory (analysis results + RAG embeddings) is mounted as a named Docker volume (`paper-dreamer-cache`) so cached results survive container restarts and rebuilds.
+After changing code, run `make up` — it always rebuilds the image before starting.
 
-After changing code, rebuild the image:
+### Cache
 
-```bash
-docker compose up --build
-```
+Two directories are written to disk during normal use:
+
+| Path | What's stored | Cleared by |
+|---|---|---|
+| `.cache/analyses/` | Structured JSON analysis results, keyed by `sha256(paperText + model)` | `make clean` or deleting from the History page |
+| `.cache/embeddings/` | RAG embedding vectors for chat, keyed by `sha256(paperText + embeddingModel)` | `make clean` |
+
+**Nothing else touches disk.** PDF files fetched from URLs are downloaded into memory, parsed, and discarded — no temp files are written to `/tmp` or anywhere else. Your filesystem stays clean.
 
 ### Adding a new model
 

@@ -66,6 +66,18 @@ ollama pull qwen3:8b
 
 ### 3. Install dependencies and run
 
+**Option A — Docker (recommended)**
+
+Requires Docker Desktop. Ollama stays native on your Mac for full GPU acceleration.
+
+```bash
+git clone <repo-url> paper-dreamer
+cd paper-dreamer
+docker compose up
+```
+
+**Option B — Node.js directly**
+
 ```bash
 git clone <repo-url> paper-dreamer
 cd paper-dreamer
@@ -104,6 +116,8 @@ Settings (default model, embedding model) can also be configured directly in the
 
 ## Commands
 
+### npm
+
 | Command | Description |
 |---|---|
 | `npm install` | Install dependencies |
@@ -111,6 +125,15 @@ Settings (default model, embedding model) can also be configured directly in the
 | `npm run build` | Build for production (Vite frontend + esbuild server bundle) |
 | `npm start` | Run production build |
 | `npm run lint` | Type-check with TypeScript (`tsc --noEmit`) |
+
+### Docker
+
+| Command | Description |
+|---|---|
+| `docker compose up` | Build image and start the app at http://localhost:3000 |
+| `docker compose up --build` | Force rebuild image (after code changes) |
+| `docker compose down` | Stop and remove containers |
+| `docker compose down -v` | Stop containers and delete the cache volume |
 
 ## Architecture
 
@@ -185,6 +208,24 @@ npm run dev
 ```
 
 This starts Express with Vite middleware for hot-reload. The frontend is served at the same port as the API (no CORS needed).
+
+### Docker setup
+
+The Docker setup uses a **3-stage build** to keep the image lean:
+
+1. **deps** — installs `node_modules` via `npm ci`
+2. **builder** — runs `npm run build` (Vite frontend + esbuild server bundle → `dist/`)
+3. **runner** — copies only `dist/` and `node_modules` into a clean Alpine image
+
+Ollama runs natively on your Mac (full Metal GPU). The container reaches it via `host.docker.internal:11434`, which Docker resolves to the host machine automatically.
+
+The `.cache/` directory (analysis results + RAG embeddings) is mounted as a named Docker volume (`paper-dreamer-cache`) so cached results survive container restarts and rebuilds.
+
+After changing code, rebuild the image:
+
+```bash
+docker compose up --build
+```
 
 ### Adding a new model
 

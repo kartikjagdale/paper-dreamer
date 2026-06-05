@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      # Reaches your native Ollama on the Mac host — full Metal GPU, no re-pulling models
+      OLLAMA_URL: http://host.docker.internal:11434
+      # Optional: pre-select a default model in the UI
+      # OLLAMA_MODEL: qwen3:8b
+    volumes:
+      # Persist analysis and embedding caches across container restarts
+      - paper-dreamer-cache:/app/.cache
+    extra_hosts:
+      # Ensures host.docker.internal resolves on Linux too (no-op on Mac/Windows)
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+volumes:
+  paper-dreamer-cache:
